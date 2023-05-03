@@ -35,6 +35,7 @@ const userCollection = database.db(MONGODB_DATABASE).collection('users');
 
 app.use(express.urlencoded({extended: false}));
 app.use(express.static(__dirname + "/../views"));
+app.use(express.static(__dirname + "/../public"));
 
 var mongoStore = MongoStore.create({
 	mongoUrl: `mongodb+srv://${MONGODB_USER}:${MONGODB_PASSWORD}@${MONGODB_HOST}/test`,
@@ -290,8 +291,6 @@ app.get('/cat/:id', (req,res) => {
     res.render("cat", {cat: cat});
 });
 
-
-app.use(express.static(__dirname + "/public"));
 
 app.get("*", (req,res) => {
 	res.status(404);
