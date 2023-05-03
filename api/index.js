@@ -34,6 +34,7 @@ const database = require("../databaseConnection.js");
 const userCollection = database.db(MONGODB_DATABASE).collection('users');
 
 app.use(express.urlencoded({extended: false}));
+app.use(express.static(__dirname + "/../views"));
 
 var mongoStore = MongoStore.create({
 	mongoUrl: `mongodb+srv://${MONGODB_USER}:${MONGODB_PASSWORD}@${MONGODB_HOST}/test`,
