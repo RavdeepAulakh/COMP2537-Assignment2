@@ -1,0 +1,41 @@
+<%- include("templates/header") %> 
+<h1>Hello, <%= user %>!</h1>
+<div class="row">
+    <div class="col-md-4">
+        <div id="cat-gif-1"></div>
+    </div>
+    <div class="col-md-4">
+        <div id="cat-gif-2"></div>
+    </div>
+    <div class="col-md-4">
+        <div id="cat-gif-3"></div>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+axios.get('/cat/1')
+    .then(function (response) {
+        document.getElementById('cat-gif-1').innerHTML = response.data;
+    })
+    .catch(function (error) {
+        console.log(error);
+    });
+
+axios.get('/cat/2')
+    .then(function (response) {
+        document.getElementById('cat-gif-2').innerHTML = response.data;
+    })
+    .catch(function (error) {
+        console.log(error);
+    });
+
+axios.get('/cat/3')
+    .then(function (response) {
+        document.getElementById('cat-gif-3').innerHTML = response.data;
+    })
+    .catch(function (error) {
+        console.log(error);
+    });
+</script>
+<a class="btn btn-primary rounded-pill px-3" href="/logout">Sign out</a>
+<%- include("templates/footer") %>
